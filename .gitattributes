@@ -1,0 +1,5 @@
+# Trata arquivos binários como binários (sem conversão de quebra de linha).
+*.pdf  binary
+*.png  binary
+*.pkl  binary
+*.csv  -text

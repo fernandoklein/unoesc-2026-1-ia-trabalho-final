@@ -101,12 +101,15 @@ agente-preditivo-vinhos/
 
 ## Diário de Bordo de Contribuições
 
-> Cada integrante descreve o que fez durante os 15 dias de desenvolvimento.
+Projeto desenvolvido individualmente por **Fernando Germano Klein**, em etapas,
+ao longo dos dias de desenvolvimento.
 
-### Fernando Germano Klein
-- **Dia 1–3 —** _(descrever)_
-- **Dia 4–7 —** _(descrever)_
-- **Dia 8–11 —** _(descrever)_
-- **Dia 12–15 —** _(descrever)_
-
-<!-- Adicione um bloco por integrante da equipe. -->
+| Data | Atividade |
+|------|-----------|
+| **08/06** | Abertura do trabalho: definição do escopo e organização do repositório (pastas `ml/`, `backend/`, `frontend/`). Reaproveitei a base *Wine Quality* (vinho tinto) usada no Trabalho I, criei o ambiente virtual e o `requirements.txt`. |
+| **09/06** | Pré-processamento dos dados: leitura do CSV, verificação de valores nulos e criação da variável alvo binária (`quality >= 7`). Revisei o que fiz no Trabalho I e corrigi o ajuste do `StandardScaler` para ser feito apenas no treino, com divisão estratificada treino/teste. |
+| **10/06** | Análise exploratória com Seaborn: matriz de correlação, boxplot e gráfico de distribuição. Confirmei o desbalanceamento das classes e a relação do álcool (positiva) e da acidez volátil (negativa) com a qualidade. |
+| **11/06** | Modelagem: implementei os quatro algoritmos exigidos — Regressão Linear Múltipla, KNN, MLP e Naive Bayes — com ajuste de hiperparâmetros (GridSearch) onde aplicável. Precisei adaptar a Regressão Linear para classificação usando um limiar de 0,5. |
+| **12/06** | Avaliação dos modelos pelas métricas de acurácia, precisão, sensibilidade e especificidade. Montei a tabela comparativa, escolhi o melhor modelo pelo F1 (KNN) e exportei `modelo.pkl`, `scaler.pkl` e o `metadata.json`. |
+| **13/06** | Backend com FastAPI (rotas `/predict` e `/analisar`, validação das 11 variáveis com Pydantic) e integração com o agente inteligente (Gemini): *System Prompt* para explicar a predição sem alucinar, tratamento de erros/timeout e modo de contingência. |
+| **14/06** | Frontend com Streamlit (formulário, exemplos por classe e visualização dos gráficos e da comparação dos modelos), melhorias na interface, documentação (este README), testes finais de ponta a ponta e publicação do repositório no GitHub. |

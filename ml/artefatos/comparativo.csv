@@ -1,0 +1,5 @@
+Modelo,Acurácia,Precisão,Sensibilidade,Especificidade,F1
+Regressão Linear Múltipla,0.8747,0.7778,0.1077,0.9952,0.1892
+KNN,0.9019,0.6667,0.5538,0.9565,0.605
+MLP,0.8956,0.6316,0.5538,0.9493,0.5902
+Naive Bayes,0.833,0.4286,0.6923,0.8551,0.5294

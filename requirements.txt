@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+seaborn
+matplotlib
+joblib
+fastapi
+uvicorn[standard]
+pydantic
+google-genai
+python-dotenv
+streamlit
+requests

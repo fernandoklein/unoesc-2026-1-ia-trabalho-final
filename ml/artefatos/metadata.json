@@ -1,0 +1,51 @@
+{
+  "melhor_modelo": "KNN",
+  "features": [
+    "fixed acidity",
+    "volatile acidity",
+    "citric acid",
+    "residual sugar",
+    "chlorides",
+    "free sulfur dioxide",
+    "total sulfur dioxide",
+    "density",
+    "pH",
+    "sulphates",
+    "alcohol"
+  ],
+  "limiar_qualidade": 7,
+  "metricas": [
+    {
+      "Modelo": "Regressão Linear Múltipla",
+      "Acurácia": 0.8747,
+      "Precisão": 0.7778,
+      "Sensibilidade": 0.1077,
+      "Especificidade": 0.9952,
+      "F1": 0.1892
+    },
+    {
+      "Modelo": "KNN",
+      "Acurácia": 0.9019,
+      "Precisão": 0.6667,
+      "Sensibilidade": 0.5538,
+      "Especificidade": 0.9565,
+      "F1": 0.605
+    },
+    {
+      "Modelo": "MLP",
+      "Acurácia": 0.8956,
+      "Precisão": 0.6316,
+      "Sensibilidade": 0.5538,
+      "Especificidade": 0.9493,
+      "F1": 0.5902
+    },
+    {
+      "Modelo": "Naive Bayes",
+      "Acurácia": 0.833,
+      "Precisão": 0.4286,
+      "Sensibilidade": 0.6923,
+      "Especificidade": 0.8551,
+      "F1": 0.5294
+    }
+  ]
+}

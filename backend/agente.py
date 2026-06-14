@@ -46,12 +46,16 @@ def _gerar_offline(classe, probabilidade, dados):
 
 
 def explicar_predicao(classe, probabilidade, dados):
-    """Gera a explicação em linguagem natural. Em caso de erro/sem chave, devolve
-    o texto de fallback — nunca lança exceção para o chamador."""
+    """Gera a explicação em linguagem natural. Retorna um dict com o texto e a
+    'fonte' (qual mecanismo respondeu), para a interface poder evidenciar se a
+    resposta veio do Gemini ou do modo de contingência. Nunca lança exceção."""
     rotulo = "BOM" if classe == 1 else "RUIM"
 
     if not GEMINI_API_KEY:
-        return _gerar_offline(classe, probabilidade, dados)
+        return {
+            "texto": _gerar_offline(classe, probabilidade, dados),
+            "fonte": "Contingência (sem chave de API configurada)",
+        }
 
     try:
         from google import genai
@@ -73,7 +77,15 @@ def explicar_predicao(classe, probabilidade, dados):
             config=types.GenerateContentConfig(system_instruction=SYSTEM_PROMPT),
         )
         texto = (resposta.text or "").strip()
-        return texto or _gerar_offline(classe, probabilidade, dados)
+        if texto:
+            return {"texto": texto, "fonte": f"Google Gemini · {GEMINI_MODEL}"}
+        return {
+            "texto": _gerar_offline(classe, probabilidade, dados),
+            "fonte": "Contingência (resposta vazia do Gemini)",
+        }
     except Exception as exc:  # noqa: BLE001 - fallback intencional e abrangente
         print(f"[agente] Falha ao chamar o Gemini: {exc}")
-        return _gerar_offline(classe, probabilidade, dados)
+        return {
+            "texto": _gerar_offline(classe, probabilidade, dados),
+            "fonte": "Contingência (falha ao acessar o Gemini)",
+        }

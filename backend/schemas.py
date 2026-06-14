@@ -51,3 +51,4 @@ class RespostaPredicao(BaseModel):
 
 class RespostaAnalise(RespostaPredicao):
     explicacao: str
+    fonte_explicacao: str

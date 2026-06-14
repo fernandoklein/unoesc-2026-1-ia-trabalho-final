@@ -97,11 +97,12 @@ def analisar(entrada: EntradaVinho):
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=500, detail=f"Erro na predição: {exc}")
 
-    explicacao = explicar_predicao(classe, proba, dados)
+    resultado = explicar_predicao(classe, proba, dados)
     return RespostaAnalise(
         classe=classe,
         rotulo=rotulo,
         probabilidade=round(proba, 4),
         modelo=METADATA["melhor_modelo"],
-        explicacao=explicacao,
+        explicacao=resultado["texto"],
+        fonte_explicacao=resultado["fonte"],
     )

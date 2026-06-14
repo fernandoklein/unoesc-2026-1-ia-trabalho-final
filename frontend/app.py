@@ -244,10 +244,18 @@ with aba_prever:
             )
 
             explicacao_html = dados["explicacao"].replace(chr(10), "<br>")
+            fonte = dados.get("fonte_explicacao", "—")
+            via_gemini = fonte.lower().startswith("google gemini")
+            cor_fonte = "#2e6e34" if via_gemini else "#9a6a00"
             st.markdown(
                 f"""
                 <div class="explica">
                   <span class="titulo">Interpretação do agente</span>{explicacao_html}
+                  <div style="margin-top:12px;font-size:.8rem;">
+                    <span style="background:{cor_fonte};color:#fff;padding:3px 10px;border-radius:99px;">
+                      Fonte: {fonte}
+                    </span>
+                  </div>
                 </div>
                 """,
                 unsafe_allow_html=True,
